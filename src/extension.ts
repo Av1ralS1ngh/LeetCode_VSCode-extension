@@ -3,25 +3,23 @@ import { fetchTestCases } from "./commands/fetchTestCases";
 import { runTestCases } from "./commands/runTestCases";
 
 // This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-  // This line of code will only be executed once when your extension is activated
   console.log(
     'Congratulations, your extension "cph-for-leetcode" is now active!'
   );
 
-  const disposable = vscode.commands.registerCommand(
+  const fetchTestCasesCommand = vscode.commands.registerCommand(
     "cph.FetchTestCases",
     fetchTestCases
   );
 
-  const disposable2 = vscode.commands.registerCommand(
+  const runTestCasesCommand = vscode.commands.registerCommand(
     "cph.RunTestCases",
     runTestCases
   );
 
-  context.subscriptions.push(disposable);
-  context.subscriptions.push(disposable2);
+  context.subscriptions.push(fetchTestCasesCommand);
+  context.subscriptions.push(runTestCasesCommand);
 }
 
 // This method is called when your extension is deactivated
