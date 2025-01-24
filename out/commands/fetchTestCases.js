@@ -69,7 +69,9 @@ async function fetchTestCases() {
             }
             const workspacePath = workspaceFolder.uri.fsPath;
             const problemName = (0, leetCodeScraper_1.extractProblemName)(questionLink);
-            const mainFilePath = await (0, fileHandler_1.createProblemFile)(problemName, language, workspacePath, testCaseandCodeSnippet[1]);
+            const mainFilePath = await (0, fileHandler_1.createProblemFile)(problemName, language, workspacePath
+            // testCaseandCodeSnippet[1]
+            );
             await (0, layoutManager_1.setupLayout)(mainFilePath);
         }
         else {

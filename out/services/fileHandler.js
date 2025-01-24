@@ -63,12 +63,16 @@ async function saveTestCases(testCases) {
         vscode.window.showErrorMessage(`An error occurred while saving files: ${error}`);
     }
 }
-async function createProblemFile(problemName, language, workspacePath, snippet) {
+async function createProblemFile(problemName, language, workspacePath
+// snippet: snippet[]
+) {
     const fileName = `${problemName}.${language === "C++" ? "cpp" : "py"}`;
-    const langSnippet = `${language === "C++" ? snippet[0].code : snippet[1].code}`;
+    // const langSnippet = `${
+    //   language === "C++" ? snippet[0].code : snippet[1].code
+    // }`;
     const filePath = path.join(workspacePath, fileName);
     if (!fs.existsSync(filePath)) {
-        fs.writeFileSync(filePath, langSnippet, "utf-8");
+        fs.writeFileSync(filePath, "", "utf-8");
     }
     return filePath;
 }
